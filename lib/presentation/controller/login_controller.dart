@@ -8,8 +8,8 @@ import 'package:location_tracking/domain/usecase/login_user_usecase.dart';
 import 'package:location_tracking/presentation/controller/base_controller.dart';
 
 class LoginController extends BaseController {
-  final email = ''.obs;
-  final password = ''.obs;
+  var email = '';
+  var password = '';
   final LoginUserUseCase loginUserUseCase;
   LoginController({
     required this.loginUserUseCase,
@@ -18,8 +18,8 @@ class LoginController extends BaseController {
   login() async {
     try {
       setLoadingState(true);
-      final result = await loginUserUseCase.login(
-          email: email.value, password: password.value);
+      final result =
+          await loginUserUseCase.login(email: email, password: password);
       Get.find<AppController>().token = result;
     } catch (e) {
       if (e is AppExceptions) {

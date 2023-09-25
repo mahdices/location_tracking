@@ -13,12 +13,10 @@ class LoginPage extends StatelessWidget {
       body: Column(
         children: [
           TextField(
-            onChanged: (value) =>
-                Get.find<LoginController>().email.value = value,
+            onChanged: (value) => Get.find<LoginController>().email = value,
           ),
           TextField(
-            onChanged: (value) =>
-                Get.find<LoginController>().password.value = value,
+            onChanged: (value) => Get.find<LoginController>().password = value,
           ),
           ElevatedButton(
               onPressed: () {
