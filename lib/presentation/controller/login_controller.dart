@@ -1,4 +1,8 @@
+import 'package:get/get.dart';
+import 'package:get/instance_manager.dart';
 import 'package:get/state_manager.dart';
+import 'package:location_tracking/core/controller/app_controller.dart';
+import 'package:location_tracking/core/errors/app_exeptions.dart';
 
 import 'package:location_tracking/domain/usecase/login_user_usecase.dart';
 import 'package:location_tracking/presentation/controller/base_controller.dart';
@@ -11,12 +15,18 @@ class LoginController extends BaseController {
     required this.loginUserUseCase,
   });
 
-  login() {
-    setLoadingState(true);
-    loginUserUseCase
-        .login(email: email.value, password: password.value)
-        .then((value) => null)
-        .onError((error, stackTrace) => null)
-        .whenComplete(() => setLoadingState(false));
+  login() async {
+    try {
+      setLoadingState(true);
+      final result = await loginUserUseCase.login(
+          email: email.value, password: password.value);
+      Get.find<AppController>().token = result;
+    } catch (e) {
+      if (e is AppExceptions) {
+        Get.snackbar('Error', e.message);
+      }
+    } finally {
+      setLoadingState(false);
+    }
   }
 }
