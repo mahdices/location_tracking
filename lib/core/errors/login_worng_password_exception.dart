@@ -1,0 +1,1 @@
+class LoginWrongPasswordException implements Exception {}

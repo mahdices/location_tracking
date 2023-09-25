@@ -1,0 +1,3 @@
+class LoginWrongUserException implements Exception {
+
+}
