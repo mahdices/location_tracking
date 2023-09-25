@@ -6,5 +6,5 @@ class BaseController extends GetxController {
     _loading.value = value;
   }
 
-  get isLoading => _loading;
+  RxBool get isLoading => _loading;
 }

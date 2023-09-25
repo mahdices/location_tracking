@@ -1,4 +1,4 @@
-import 'package:location_tracking/domain/repository/user_repository.dart';
+import 'package:location_tracking/location_app/login/domain/repository/user_repository.dart';
 
 class LoginUserUseCase {
   final UserRepository repository;

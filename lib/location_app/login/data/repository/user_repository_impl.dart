@@ -1,8 +1,7 @@
-import 'package:location_tracking/data/datasource/login_datasource.dart';
+import 'package:location_tracking/location_app/login/data/datasource/login_datasource.dart';
+import 'package:location_tracking/location_app/login/domain/repository/user_repository.dart';
 
-import 'package:location_tracking/domain/repository/user_repository.dart';
-
-class UserRepositoryImpl extends UserRepository {
+class UserRepositoryImpl implements UserRepository {
   LoginDatasource datasource;
   UserRepositoryImpl({
     required this.datasource,

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:get/instance_manager.dart';
-import 'package:location_tracking/presentation/controller/login_controller.dart';
+import 'package:location_tracking/location_app/login/presentation/controller/login_controller.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -22,7 +23,11 @@ class LoginPage extends StatelessWidget {
               onPressed: () {
                 Get.find<LoginController>().login();
               },
-              child: Text('Login'))
+              child: ObxValue(
+                  (loading) => loading.value
+                      ? CircularProgressIndicator()
+                      : Text('Login'),
+                  Get.find<LoginController>().isLoading))
         ],
       ),
     );

@@ -1,8 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-import 'package:location_tracking/presentation/controller/binding/login_binding.dart';
-import 'package:location_tracking/presentation/pages/login_page.dart';
+import 'package:location_tracking/core/controller/app_binding.dart';
+import 'package:location_tracking/location_app/home/presentation/controller/bindings/home_binding.dart';
+import 'package:location_tracking/location_app/home/presentation/pages/home_page.dart';
+import 'package:location_tracking/location_app/login/presentation/controller/binding/login_binding.dart';
+import 'package:location_tracking/location_app/login/presentation/pages/login_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,11 +26,17 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       initialRoute: '/login',
+      initialBinding: AppBinding(),
       getPages: [
         GetPage(
           name: '/login',
           page: () => const LoginPage(),
           binding: LoginBinding(),
+        ),
+        GetPage(
+          name: '/home',
+          page: () => const HomePage(),
+          binding: HomeBinding(),
         ),
       ],
     );
