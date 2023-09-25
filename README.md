@@ -1,3 +1,8 @@
 # location_tracking
 
-A new Flutter project.
+A sample clean architucture with login and home page
+this code needs some refactoring and need to added test
+
+### How to run
+
+just clone and flutter run
